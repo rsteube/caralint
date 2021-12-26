@@ -25,7 +25,7 @@ var rootCmd = &cobra.Command{
 		}
 		run := sarif.NewRun("caralint", "https://github.com/rsteube/caralint")
 
-		run.AddRule(rules.C001.Id).WithDescription(rules.C001.Desciption)
+		run.AddRule(rules.C001.Id).WithDescription(rules.C001.Description)
 
 		for _, arg := range args {
 			// TODO verify go file
@@ -43,7 +43,7 @@ var rootCmd = &cobra.Command{
 							WithArtifactLocation(sarif.NewSimpleArtifactLocation(arg)).
 							WithRegion(result.Region)))
 		}
-        report.AddRun(run)
+		report.AddRun(run)
 		report.PrettyWrite(os.Stdout)
 		os.Exit(exitCode)
 	},
