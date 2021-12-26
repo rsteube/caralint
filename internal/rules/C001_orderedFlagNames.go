@@ -10,9 +10,9 @@ import (
 )
 
 type Rule struct {
-	Id         string
-	Desciption string
-	Check      func(path string) (*Result, error)
+	Id          string
+	Description string
+	Check       func(path string) (*Result, error)
 }
 
 type Result struct {
@@ -21,13 +21,12 @@ type Result struct {
 }
 
 var C001 = Rule{
-	Id:         "C001",
-	Desciption: "flags should be ordered",
+	Id:          "C001",
+	Description: "flags should be ordered",
 	Check: func(path string) (*Result, error) {
 		file, err := os.Open(path)
 		if err != nil {
-			// TODO add as another result?
-			//return err
+			return nil, err
 		}
 		defer file.Close()
 
